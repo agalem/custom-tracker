@@ -4,18 +4,46 @@ export const activities = [
     {
         id: 0,
         name: 'Reading',
+        spendTime: [
+            {
+                spend: 120,
+                date: new Date('2018-11-10')
+            }
+        ]
     },
     {
         id: 1,
-        name: 'Learning JavaScript'
+        name: 'Learning JavaScript',
+        spendTime: [
+            {
+                spend: 120,
+                date: new Date('2018-11-10')
+            }
+        ]
     },
     {
         id: 2,
-        name: 'Sleeping'
+        name: 'Sleeping',
+        spendTime: [
+            {
+                spend: 480,
+                date: new Date('2018-11-10')
+            }
+        ]
     },
     {
         id: 3,
-        name: 'Playing with dog'
+        name: 'Playing with dog',
+        spendTime: [
+            {
+                spend: 60,
+                date: new Date('2018-11-10')
+            },
+            {
+                spend: 30,
+                date: new Date('2018-11-11')
+            }
+        ]
     }
 ];
 
@@ -65,6 +93,16 @@ class ActivitiesApi {
                 resolve(activity);
             }, delay);
         });
+    }
+
+    static addTimeToActivity(activityId, timeObject) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const activityIndex = activities.findIndex(x => x.id === activityId);
+                activities[activityIndex].spendTime.push(timeObject);
+                resolve();
+            }, delay)
+        })
     }
 
     static deleteActivity(activityId) {

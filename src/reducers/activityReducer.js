@@ -1,7 +1,9 @@
+import * as types from '../actions/actionTypes';
+
 export default function activityReducer(state = [], action) {
     switch (action.type) {
-        case 'CREATE_ACTIVITY':
-            return [...state, Object.assign({}, action.activity)];
+        case types.LOAD_ACTIVITIES_SUCCESS:
+            return action.activities;
         default:
             return state;
     }
